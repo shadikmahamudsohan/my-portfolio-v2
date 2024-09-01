@@ -1,0 +1,17 @@
+html {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+section {
+  height: 100vh;
+  scroll-snap-align: center;
+}
+.no-transform {
+  transform: initial;
+}
+
+@media (max-width: 768px) {
+  .no-transform {
+    transform: none !important;
+  }
+}

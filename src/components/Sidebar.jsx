@@ -12,9 +12,9 @@ const Sidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="drawer lg:drawer-open">
+    <div className="drawer lg:drawer-open font-space-mono">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+      <div className="drawer-content flex flex-col items-center justify-center min-h-screen p-6">
         {/* Page content here */}
         <Outlet />
         <label

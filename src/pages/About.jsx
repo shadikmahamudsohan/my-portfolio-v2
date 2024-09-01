@@ -1,72 +1,196 @@
-import { motion } from "framer-motion";
-import { imageVariant, textVariant } from "../animation/animationVariants";
+import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Reveal from "../components/ui/Reveal";
+import { useRef } from "react";
+// import { SiMongoose } from "react-icons/si"; // mongoose
 
-function About() {
+const AboutMe = () => {
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-800 p-6">
-      {/* About Section */}
-      <div className="flex flex-col md:flex-row items-center space-y-8 md:space-y-0 md:space-x-12 mb-12">
-        <Reveal delay="0.1">
-          <img
-            src="https://picsum.photos/200"
-            alt="Profile"
-            className="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover"
-          />
-        </Reveal>
-        <div className="text-center md:text-left">
-          <Reveal delay="0.3">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100">
-              About Me
-            </h1>
+    <section className="flex items-center justify-center mb-16">
+      <div className="card md:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+        <figure className="p-6" ref={ref}>
+          <Reveal delay="0">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
+              alt="My image"
+              className="rounded-xl opacity-90 select-none  h-[200px] md:h-auto"
+            />
           </Reveal>
-          <Reveal delay="0.5">
-            <p className="mt-4 text-lg md:text-xl text-gray-700 dark:text-gray-300">
-              I am a passionate web developer with experience in building
-              dynamic and responsive web applications.
+        </figure>
+        <motion.div
+          style={{ y }}
+          className="card-body max-w-[100%] md:max-w-[50%] no-transform "
+        >
+          <Reveal delay="0.3">
+            <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0">
+              About Me
+            </h2>
+          </Reveal>
+          <Reveal delay="0.6">
+            <p className=" mb-5">
+              My name is <strong>Shadik Mahamud</strong>. I am a{" "}
+              <strong>full stack web developer</strong>. I have been doing web
+              development for <strong>3 years</strong>. I always liked to write
+              code and make my imagination come true. I like to work with new
+              technologies. I am happy to learn any ting to make a good website.
+              I am happy to work with new peoples and help them to make their
+              websites.
             </p>
           </Reveal>
-          <Reveal delay="0.7">
-            <button className="mt-6 px-6 py-2 bg-primary text-white rounded-full text-lg md:text-xl hover:bg-primary">
-              Resume
-            </button>
+          <Reveal delay="0.9">
+            <div className="card-actions">
+              <button className="btn btn-outline">View Resume</button>
+            </div>
           </Reveal>
-        </div>
+        </motion.div>
       </div>
+    </section>
+  );
+};
+const Languages = () => {
+  const ref = useRef();
 
-      {/* Skills Section */}
-      <div className="w-full">
-        <h2 className="text-2xl md:text-3xl font-semibold text-center text-gray-900 dark:text-gray-100 mb-8">
-          Skills
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
-          {[
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "React JS",
-            "Next JS",
-            "Node JS",
-            "Mongoose",
-            "Tailwind",
-          ].map((skill) => (
-            <motion.div
-              key={skill}
-              className="p-4 bg-gray-200 dark:bg-gray-700 rounded-lg text-center shadow-lg"
-              variants={textVariant}
-              initial="hidden"
-              animate="visible"
-              whileHover={{ scale: 1.05 }}
-            >
-              <p className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-200">
-                {skill}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+
+  const languages = [
+    { id: 1, name: "HTML" },
+    { id: 2, name: "CSS" },
+    { id: 3, name: "JavaScript" },
+    { id: 4, name: "Tailwind" },
+    { id: 5, name: "React" },
+    { id: 6, name: "Node.js" },
+    { id: 7, name: "MongoDB" },
+    { id: 8, name: "Express.js" },
+    { id: 9, name: "Mongoose" },
+    { id: 10, name: "Next js" },
+  ];
+
+  return (
+    <section className="flex items-center justify-center">
+      <div className="card lg:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+        <motion.div
+          style={{ y }}
+          className="card-body max-w-[100%] md:max-w-[50%] no-transform"
+        >
+          <Reveal delay="0.3">
+            <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0 ">
+              My Languages
+            </h2>
+          </Reveal>
+          <Reveal delay="0.6">
+            <div className="flex flex-wrap">
+              {languages.map((language) => (
+                <p key={language.id} className="p-3 m-3 badge badge-outline">
+                  {language.name}
+                </p>
+              ))}
+            </div>
+          </Reveal>
+        </motion.div>
+        <figure className="p-6" ref={ref}>
+          <Reveal delay="0">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
+              alt="My image"
+              className="rounded-xl opacity-90 select-none  h-[200px] md:h-auto"
+            />
+          </Reveal>
+        </figure>
       </div>
+    </section>
+  );
+};
+const Tools = () => {
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+
+  const tools = [
+    { id: 1, name: "Git" },
+    { id: 2, name: "GitHub" },
+    { id: 3, name: "VS Code" },
+    { id: 4, name: "Figma" },
+  ];
+
+  return (
+    <section className="flex items-center justify-center">
+      <div className="card lg:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+        <figure className="p-6" ref={ref}>
+          <Reveal delay="0">
+            <img
+              src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
+              alt="My image"
+              className="rounded-xl opacity-90 select-none  h-[200px] md:h-auto"
+            />
+          </Reveal>
+        </figure>
+
+        <motion.div
+          style={{ y }}
+          className="card-body max-w-[100%] md:max-w-[50%] no-transform"
+        >
+          <Reveal delay="0.3">
+            <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0 ">
+              MY Tools
+            </h2>
+          </Reveal>
+          <Reveal delay="0.6">
+            <div className="flex flex-wrap">
+              {tools.map((language) => (
+                <p key={language.id} className="p-3 m-3 badge badge-outline">
+                  {language.name}
+                </p>
+              ))}
+            </div>
+          </Reveal>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const About = () => {
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["end end", "start start"],
+  });
+
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+  });
+
+  return (
+    <div className="relative" ref={ref}>
+      <div className="sticky top-0 left-0 pt-[30px] text-center text-primary text-3xl font-bold  z-50">
+        <h1>About Me</h1>
+        <motion.div
+          style={{ scaleX }}
+          className="h-[10px] bg-secondary rounded-lg shadow-xl"
+        ></motion.div>
+      </div>
+      <AboutMe />
+      <Languages />
+      <Tools />
     </div>
   );
-}
+};
 
 export default About;
