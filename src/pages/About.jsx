@@ -1,6 +1,7 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 import Reveal from "../components/ui/Reveal";
 import { useRef } from "react";
+import Card from "../components/ui/Card";
 // import { SiMongoose } from "react-icons/si"; // mongoose
 
 const AboutMe = () => {
@@ -13,10 +14,10 @@ const AboutMe = () => {
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
 
   return (
-    <section className="flex items-center justify-center mb-16">
-      <div className="card md:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+    <section className="snapping-section flex items-center justify-center mb-16">
+      <Card className="card md:card-side bg-neutral bg-clip-padding bg-opacity-60 border border-primary max-w-[950px]">
         <figure className="p-6" ref={ref}>
-          <Reveal delay="0">
+          <Reveal delay="1">
             <img
               src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
               alt="My image"
@@ -28,12 +29,12 @@ const AboutMe = () => {
           style={{ y }}
           className="card-body max-w-[100%] md:max-w-[50%] no-transform "
         >
-          <Reveal delay="0.3">
+          <Reveal delay="1.3">
             <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0">
               About Me
             </h2>
           </Reveal>
-          <Reveal delay="0.6">
+          <Reveal delay="1.6">
             <p className=" mb-5">
               My name is <strong>Shadik Mahamud</strong>. I am a{" "}
               <strong>full stack web developer</strong>. I have been doing web
@@ -44,13 +45,13 @@ const AboutMe = () => {
               websites.
             </p>
           </Reveal>
-          <Reveal delay="0.9">
+          <Reveal delay="1.9">
             <div className="card-actions">
               <button className="btn btn-outline">View Resume</button>
             </div>
           </Reveal>
         </motion.div>
-      </div>
+      </Card>{" "}
     </section>
   );
 };
@@ -77,18 +78,18 @@ const Languages = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center">
-      <div className="card lg:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+    <section className="snapping-section flex items-center justify-center">
+      <Card className="card md:card-side bg-neutral bg-clip-padding bg-opacity-60 border border-primary max-w-[950px]">
         <motion.div
           style={{ y }}
           className="card-body max-w-[100%] md:max-w-[50%] no-transform"
         >
-          <Reveal delay="0.3">
+          <Reveal delay="1.3">
             <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0 ">
               My Languages
             </h2>
           </Reveal>
-          <Reveal delay="0.6">
+          <Reveal delay="1.6">
             <div className="flex flex-wrap">
               {languages.map((language) => (
                 <p key={language.id} className="p-3 m-3 badge badge-outline">
@@ -99,7 +100,7 @@ const Languages = () => {
           </Reveal>
         </motion.div>
         <figure className="p-6" ref={ref}>
-          <Reveal delay="0">
+          <Reveal delay="1">
             <img
               src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
               alt="My image"
@@ -107,7 +108,7 @@ const Languages = () => {
             />
           </Reveal>
         </figure>
-      </div>
+      </Card>
     </section>
   );
 };
@@ -128,10 +129,10 @@ const Tools = () => {
   ];
 
   return (
-    <section className="flex items-center justify-center">
-      <div className="card lg:card-side bg-base-100 shadow-section-shadow max-w-[950px]">
+    <section className="snapping-section flex items-center justify-center">
+      <Card className="card md:card-side bg-neutral bg-clip-padding bg-opacity-60 border border-primary max-w-[950px]">
         <figure className="p-6" ref={ref}>
-          <Reveal delay="0">
+          <Reveal delay="1">
             <img
               src="https://img.daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.webp"
               alt="My image"
@@ -144,12 +145,12 @@ const Tools = () => {
           style={{ y }}
           className="card-body max-w-[100%] md:max-w-[50%] no-transform"
         >
-          <Reveal delay="0.3">
+          <Reveal delay="1.3">
             <h2 className="card-title text-4xl mb-5 sm:mt-5 md:mt-0 ">
               MY Tools
             </h2>
           </Reveal>
-          <Reveal delay="0.6">
+          <Reveal delay="1.6">
             <div className="flex flex-wrap">
               {tools.map((language) => (
                 <p key={language.id} className="p-3 m-3 badge badge-outline">
@@ -159,7 +160,7 @@ const Tools = () => {
             </div>
           </Reveal>
         </motion.div>
-      </div>
+      </Card>
     </section>
   );
 };
@@ -179,13 +180,13 @@ const About = () => {
 
   return (
     <div className="relative" ref={ref}>
-      <div className="sticky top-0 left-0 pt-[30px] text-center text-primary text-3xl font-bold  z-50">
+      <Card className="sticky top-10 left-0 pt-[10px] pb-[20px] card text-center text-primary text-xl font-bold z-10 bg-neutral bg-clip-padding bg-opacity-40 border border-primary">
         <h1>About Me</h1>
         <motion.div
           style={{ scaleX }}
-          className="h-[10px] bg-secondary rounded-lg shadow-xl"
+          className="h-[8px] bg-primary rounded-lg shadow-xl"
         ></motion.div>
-      </div>
+      </Card>
       <AboutMe />
       <Languages />
       <Tools />
