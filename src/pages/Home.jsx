@@ -1,11 +1,7 @@
-import Sidebar from "../components/Sidebar";
+import Hero from "../components/Hero";
 
 function Home() {
-  return (
-    <div className="">
-      <Sidebar>hello</Sidebar>
-    </div>
-  );
+  return <Hero />;
 }
 
 export default Home;

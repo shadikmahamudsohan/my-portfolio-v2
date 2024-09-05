@@ -5,6 +5,7 @@ import Sidebar from "./components/Sidebar";
 import "./App.css";
 import Projects from "./pages/Projects";
 import Cursor from "./components/Cursor";
+import Home from "./pages/Home";
 function App() {
   return (
     <div>
@@ -12,6 +13,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Sidebar />}>
+            <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />

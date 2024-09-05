@@ -5,6 +5,7 @@ import ThemeToggler from "./ui/ThemeToggler";
 
 const Sidebar = () => {
   const links = [
+    { id: 1, name: "Home", link: "/", icon: <FaUserTie /> },
     { id: 1, name: "About", link: "/about", icon: <FaUserTie /> },
     { id: 2, name: "projects", link: "/projects", icon: <FaUserTie /> },
     { id: 3, name: "contact", link: "/contact", icon: <FaUserTie /> },
@@ -38,7 +39,8 @@ const Sidebar = () => {
               <Link
                 to={link.link}
                 className={`btn mb-5 btn-block ${
-                  location.pathname === link.link
+                  location.pathname === link.link ||
+                  (location.pathname === "home" && link.link === "/")
                     ? "btn-primary"
                     : "btn-neutral"
                 } w-full`}

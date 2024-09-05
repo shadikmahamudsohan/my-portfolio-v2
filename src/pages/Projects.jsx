@@ -37,7 +37,7 @@ const Projects = () => {
   return (
     <div className="relative" ref={ref}>
       <Card className="sticky top-10 left-0 pt-[10px] pb-[20px] card text-center text-primary text-xl font-bold z-10 bg-neutral bg-clip-padding bg-opacity-40 border border-primary mb-14 px-5">
-        <h1>About Me</h1>
+        <h1>My Projects</h1>
         <motion.div
           style={{ scaleX }}
           className="h-[8px] bg-primary rounded-lg shadow-xl"
